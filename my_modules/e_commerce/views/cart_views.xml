@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="cart_view_form" model="ir.ui.view">
+            <field name="name">cart_view_form</field>
+            <field name="model">cart</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button string="Fazer Pedido" 
+                                name="finalize_purchase" 
+                                type="object" 
+                                class="btn btn-primary"
+                                attrs="{'invisible': [('state', '!=', 'in_progress')]}"/>
+                        <button string="Cancelar" 
+                                name="cancel_purchase" 
+                                type="object" 
+                                class="btn btn-primary"
+                                attrs="{'invisible': [('state', '!=', 'in_progress')]}"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group string='Cadastro de Carrinho'>
+                            <field name="cod" readonly="1"/>
+                            <field name="product_ids" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
+                            <field name="total_order" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="cart_view_tree" model="ir.ui.view">
+            <field name="name">cart_view_tree</field>
+            <field name="model">cart</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="cod" />
+                    <field name="product_ids" />
+                    <field name="total_order" />
+                </tree>
+            </field>
+        </record>\
+
+        <record id='cart_action' model='ir.actions.act_window'>
+            <field name="name">Carrinho</field>
+            <field name="res_model">cart</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="cart_menuitem"
+            name="Carrinho"
+            parent="menu_product"
+            action="cart_action"
+            sequence="2"
+            />
+    </data>
+</odoo>

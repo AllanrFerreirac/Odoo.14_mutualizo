@@ -1,0 +1,2 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_account_foreign_exchange_rate","account_foreign_exchange_rate.account_foreign_exchange_rate","model_account_foreign_exchange_rate","base.group_user",1,1,1,1

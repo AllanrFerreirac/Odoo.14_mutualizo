@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="account_move_integration_view_form" model="ir.ui.view">
+            <field name="name">account_move_integration_view_form</field>
+            <field name="model">account.move.integration</field>
+            <field name="arch" type="xml">
+                <form create="false" edit="false">
+                    <header>
+                        <field name="status" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group string='Integração de fatura'>
+                            <field name="invoice_id" />
+                            <field name="external_system_id" />
+                            <field name="response_message" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="account_move_integration_view_tree" model="ir.ui.view">
+            <field name="name">account_move_integration_view_tree</field>
+            <field name="model">account.move.integration</field>
+            <field name="arch" type="xml">
+                <tree create="false" edit="false">
+                    <field name="invoice_id" />
+                    <field name="external_system_id" />
+                    <field name="response_message" />
+                    <field name="status" />
+                </tree>
+            </field>
+        </record>
+
+        <record id='account_move_integration_action' model='ir.actions.act_window'>
+            <field name="name">Integração de fatura de conta</field>
+            <field name="res_model">account.move.integration</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="menu_account_move_integration"
+            name="Integração de fatura de conta"
+            action="account_move_integration_action"
+            sequence="1"
+            />
+    </data>
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="order_view_form" model="ir.ui.view">
+            <field name="name">order_view_form</field>
+            <field name="model">order</field>
+            <field name="arch" type="xml">
+                <form create="false" edit="false">
+                    <header>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group string='Pedidos'>
+                            <field name="cod" />
+                            <field name="product_ids" />
+                            <field name="total_order" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="order_view_tree" model="ir.ui.view">
+            <field name="name">order_view_tree</field>
+            <field name="model">order</field>
+            <field name="arch" type="xml">
+                <tree create="false" edit="false">
+                    <field name="cod" />
+                    <field name="product_ids" />
+                    <field name="total_order" />
+                </tree>
+            </field>
+        </record>\
+
+        <record id='order_action' model='ir.actions.act_window'>
+            <field name="name">Pedido</field>
+            <field name="res_model">order</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="order_menuitem"
+            name="Pedido"
+            parent="menu_product"
+            action="order_action"
+            sequence="3"
+            />
+    </data>
+</odoo>
